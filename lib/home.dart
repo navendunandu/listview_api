@@ -11,6 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late List<UserModel>? _userModel = [];
+  late List<UserModel>? _userDataModel = [];
   @override
   void initState() {
     super.initState();
@@ -19,6 +20,11 @@ class _HomeState extends State<Home> {
 
   void _getData() async {
     _userModel = (await ApiService().getUsers())!;
+    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+  }
+
+  void _getUserData() async {
+    _userDataModel = (await ApiService().getUsers())!;
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
   }
 
